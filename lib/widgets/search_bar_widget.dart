@@ -18,10 +18,23 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     super.initState();
     final prov = Provider.of<ServerProvider>(context, listen: false);
     controller = TextEditingController(text: prov.searchQuery);
+    prov.addListener(_provListener);
+  }
+
+  void _provListener() {
+    final prov = Provider.of<ServerProvider>(context, listen: false);
+    if (prov.searchQuery != controller.text) {
+      controller.value = controller.value.copyWith(
+        text: prov.searchQuery,
+        selection: TextSelection.collapsed(offset: prov.searchQuery.length),
+      );
+    }
   }
 
   @override
   void dispose() {
+    final prov = Provider.of<ServerProvider>(context, listen: false);
+    prov.removeListener(_provListener);
     controller.dispose();
     super.dispose();
   }
@@ -41,7 +54,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
       child: Row(
         children: [
           SizedBox(width: 2),
-          Icon(Icons.search, color: Colors.white.withOpacity(0.4), size: 18),
+          Icon(Icons.search, color: Color.fromRGBO(255,255,255,0.4), size: 18),
           SizedBox(width: 12),
           Expanded(
             child: TextField(
@@ -59,7 +72,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               decoration: InputDecoration(
                 hintText: 'Поиск',
                 hintStyle: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
+                  color: Color.fromRGBO(255,255,255,0.6),
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
@@ -74,7 +87,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 prov.updateSearchQuery('');
                 controller.clear();
               },
-              child: Icon(Icons.close, color: Colors.white.withOpacity(0.6), size: 18),
+              child: Icon(Icons.close, color: Color.fromRGBO(255,255,255,0.6), size: 18),
             ),
         ],
       ),

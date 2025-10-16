@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:device_preview/device_preview.dart';
 import 'provider/server_provider.dart';
 import 'screens/access_point_screen.dart';
 
 void main() {
-  runApp(const AccessPointsApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const AccessPointsApp(),
+    ),
+  );
 }
 
 class AccessPointsApp extends StatelessWidget {
@@ -12,18 +21,34 @@ class AccessPointsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const backgroundColor = Color(0xFF1A2838);
+
     return ChangeNotifierProvider(
       create: (_) => ServerProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Access Points',
         theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xFF1A2838),
+          scaffoldBackgroundColor: backgroundColor,
           fontFamily: 'Inter',
         ),
-        home: const AccessPointScreen(),
+        home: const AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle(
+            statusBarColor: backgroundColor,
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.dark,
+            systemNavigationBarColor: backgroundColor,
+            systemNavigationBarIconBrightness: Brightness.light,
+          ),
+          child: AccessPointScreen(),
+        ),
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
       ),
     );
   }
 }
+
+
 

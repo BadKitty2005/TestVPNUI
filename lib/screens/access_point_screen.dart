@@ -7,6 +7,7 @@ import 'all_tab.dart';
 import 'my_tab.dart';
 import 'favorites_tab.dart';
 import 'empty_state.dart';
+import 'dart:math' as math;
 
 class AccessPointScreen extends StatelessWidget {
   const AccessPointScreen({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class AccessPointScreen extends StatelessWidget {
 
     final bgColor = Color(0xFF1A2838);
     final screenW = MediaQuery.of(context).size.width;
-    final contentWidth = (screenW - 32) < 343 ? (screenW - 32) : 343.0;
+    final contentWidth = math.min(343.0, screenW - 32.0); //поменяла, чтобы больше соответсвовало макету и сохранялась адаптивность
 
     Widget bodyForTab() {
       final filtered = prov.filteredForTab(prov.activeTab);
@@ -61,7 +62,6 @@ class AccessPointScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 8),
-              // Title
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -77,15 +77,12 @@ class AccessPointScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 12),
-              // Tab bar
               Center(
                 child: CustomTabBar(width: contentWidth, height: 40),
               ),
               SizedBox(height: 16),
-              // Search
               Center(child: SearchBarWidget(width: contentWidth)),
-              SizedBox(height: 12),
-              // content area
+              SizedBox(height: 20),
               Expanded(
                 child: Column(
                   children: [
@@ -118,3 +115,4 @@ class AccessPointScreen extends StatelessWidget {
     }
   }
 }
+

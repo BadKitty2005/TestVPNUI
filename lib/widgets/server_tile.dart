@@ -28,14 +28,14 @@ class ServerTile extends StatelessWidget {
       child: Container(
         width: width,
         height: 68,
-        padding: EdgeInsets.fromLTRB(16, 8, 16, 8), //пришлось уменьшить из-за ошибки
+        padding: EdgeInsets.fromLTRB(16, 12, 16, 12),
         margin: EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.02),
+          color: Color.fromRGBO(255,255,255,0.02),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             width: isSelected ? 2 : 1,
-            color: isSelected ? Color(0xFF02A9FF) : Colors.white.withOpacity(0.12),
+            color: isSelected ? Color(0xFF02A9FF) : Color.fromRGBO(255,255,255,0.12),
           ),
         ),
         child: Row(
