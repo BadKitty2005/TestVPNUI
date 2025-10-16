@@ -12,7 +12,7 @@ class SearchBarWidget extends StatefulWidget {
 
 class _SearchBarWidgetState extends State<SearchBarWidget> {
   late TextEditingController controller;
-
+//теперь при переходе на другой таб всё сбрасывается
   @override
   void initState() {
     super.initState();

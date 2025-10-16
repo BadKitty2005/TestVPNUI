@@ -45,7 +45,7 @@ class ServerTile extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white.withOpacity(0.05),
+                color: Color.fromRGBO(255,255,255,0.05),
               ),
               alignment: Alignment.center,
               child: ClipRRect(

@@ -18,7 +18,7 @@ class AccessPointScreen extends StatelessWidget {
 
     final bgColor = Color(0xFF1A2838);
     final screenW = MediaQuery.of(context).size.width;
-    final contentWidth = math.min(343.0, screenW - 32.0); //поменяла, чтобы больше соответсвовало макету и сохранялась адаптивность
+    final contentWidth = math.min(343.0, screenW - 32.0); //поменяла, чтобы больше соответсвовало макету но и адаптивность чтоюы была
 
     Widget bodyForTab() {
       final filtered = prov.filteredForTab(prov.activeTab);

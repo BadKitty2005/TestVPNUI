@@ -22,7 +22,7 @@ class AccessPointsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const backgroundColor = Color(0xFF1A2838);
-
+//иконочки системные теперь белые
     return ChangeNotifierProvider(
       create: (_) => ServerProvider(),
       child: MaterialApp(
