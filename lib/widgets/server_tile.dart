@@ -109,7 +109,7 @@ class ServerTile extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Icon(
                       Icons.favorite,
-                      size: 20,
+                      size: 18,
                       color: isFav ? Color(0xFFC952F5) : Color(0xFF2B3E58),
                     ),
                   ),

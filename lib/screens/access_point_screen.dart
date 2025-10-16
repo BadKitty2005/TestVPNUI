@@ -44,7 +44,7 @@ class AccessPointScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: (screenW - contentWidth) / 2),
+          padding: EdgeInsets.symmetric(horizontal: (screenW - contentWidth) / 3),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

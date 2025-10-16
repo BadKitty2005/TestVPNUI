@@ -72,7 +72,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               decoration: InputDecoration(
                 hintText: 'Поиск',
                 hintStyle: TextStyle(
-                  color: Color.fromRGBO(255,255,255,0.6),
+                  color: Color.fromRGBO(255,255,255,0.06),
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
