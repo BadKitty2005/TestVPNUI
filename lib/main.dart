@@ -42,7 +42,6 @@ class AccessPointsApp extends StatelessWidget {
           ),
           child: AccessPointScreen(),
         ),
-        useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
       ),
